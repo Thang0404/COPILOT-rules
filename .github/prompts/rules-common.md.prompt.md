@@ -29,7 +29,14 @@ Do not create new files or new logic unless there is a clear request
 Do not write comments in code
 
 
+## Code Formatting Rules
 
+- No trailing whitespace on any line
+- No blank lines with only spaces or tabs
+- Maximum one blank line between functions
+- Use consistent indentation (4 spaces for Python)
+- Remove all linting errors before committing (use `black` or `autopep8`)
+- Run `flake8` to check for PEP 8 violations before final code
 
 # note for create md summary ticket
 khi tạo link hãy tạo theo format 
