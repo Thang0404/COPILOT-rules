@@ -2118,3 +2118,48 @@ c) **Large CSV** (5000 devices):
 - [ ] Verify database query performance
 - [ ] Review MongoDB indexes for workflow queries
   
+
+
+
+  {
+"query": "mutation PrepareBatchAction($tenantId: String, $rowCount: Int, $config: BatchAction, $deviceType: String, $brandId: String, $provisionType: String, $targetWorkspaceId: String, $simControlAction: String, $simControlRuleId: String, $serviceTypeId: Int, $blockFactoryResetAction: String, $blockAEProvisioningAction: String, $blockADBCommandAction: String, $workflowId: String) {\n prepareBatchAction(\n tenantId: $tenantId\n rowCount: $rowCount\n config: $config\n deviceType: $deviceType\n brandId: $brandId\n provisionType: $provisionType\n targetWorkspaceId: $targetWorkspaceId\n simControlAction: $simControlAction\n simControlRuleId: $simControlRuleId\n serviceTypeId: $serviceTypeId\n blockFactoryResetAction: $blockFactoryResetAction\n blockAEProvisioningAction: $blockAEProvisioningAction\n blockADBCommandAction: $blockADBCommandAction\n workflowId: $workflowId\n ) {\n batchActionId\n fileUpload {\n url\n fields\n __typename\n }\n __typename\n }\n}",
+"variables": {
+"tenantId": "deveco",
+"rowCount": 1,
+"config": {
+"service_type_id": "5",
+"states": [
+{
+"action_id": "693f07c1-a8a5-40d0-8d73-99855385f89f",
+"state_id": 1,
+"options": {
+"activity_days": null,
+"template_id": null,
+"apply_service_type_ids": [
+2
+]
+}
+}
+]
+},
+"deviceType": "Smartphone",
+"brandId": null,
+"provisionType": null
+}
+}
+
+{
+"query": "mutation FinalizeBatchAction($tenantId: String, $batchActionId: String, $batchUploadType: String, $simControlName: String, $simControlId: String, $billingDetail: BillingCycleAssignment, $duration: Int, $blinkFrequency: Int, $blinkTimeUnit: String, $workflowId: String, $serviceTypeId: Int, $exitWorkflowReason: String) {\n finalizeBatchAction(\n tenantId: $tenantId\n batchActionId: $batchActionId\n batchUploadType: $batchUploadType\n simControlName: $simControlName\n simControlId: $simControlId\n billingDetail: $billingDetail\n duration: $duration\n blinkFrequency: $blinkFrequency\n blinkTimeUnit: $blinkTimeUnit\n workflowId: $workflowId\n serviceTypeId: $serviceTypeId\n exitWorkflowReason: $exitWorkflowReason\n )\n}",
+"variables": {
+"tenantId": "deveco",
+"batchActionId": "2354",
+"batchUploadType": "ASSIGN_ACTION",
+"billingDetail": {
+"billingStartDate": "2026-01-28 17:48:43"
+},
+"workflowId": "6927f76d2adbe70b9019c310",
+"serviceTypeId": 2
+}
+}
+
+đây là 2 mutation được gọi khi bấm submit cho New bulk action" + Register Prepaid + Assign Workflow , kiểm tra với những giá trị này thì nó chạy như nào , có đúng không
